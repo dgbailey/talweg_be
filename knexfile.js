@@ -3,17 +3,27 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
-    useNullAsDefault: true,
+
+      client: 'pg',
+      connection: {
+        host: '127.0.0.1',
+        user: 'postgres',
+        password: 'postgres',
+        database: 'talweg_be'
+      },
+      // searchPath: ['knex', 'public'],
+    // searchPath: ['knex', 'public'],
+    // client: 'sqlite3',
+    // useNullAsDefault: true,
     migrations: {
       directory: './data/migrations'
     },
     seeds: {
       directory: './data/seeds'
     },
-    connection: {
-      filename: './dev.sqlite3'
-    },
+    // connection: {
+    //   filename: './dev.sqlite3'
+    // },
     
     
   },

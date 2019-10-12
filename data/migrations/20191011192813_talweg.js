@@ -3,12 +3,13 @@ exports.up = function(knex) {
     return knex.schema
     .createTable('users_dim',function(usersDim){
         usersDim.increments()
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
+     
         usersDim
+       
             .string('username','225')
             .notNullable()
-            .unique();
+            .unique()
+            
         usersDim
             .string('password')
             .notNullable();
@@ -16,8 +17,7 @@ exports.up = function(knex) {
     })
     .createTable('service_providers',function(tbl){
         tbl.increments()
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
+       
         tbl
             .string('company_name')
             .notNullable()
@@ -26,8 +26,7 @@ exports.up = function(knex) {
 
     .createTable('service',function(tbl){
         tbl.increments()
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
+       
         tbl
             .string('service_name')
             .notNullable()
@@ -43,8 +42,7 @@ exports.up = function(knex) {
 
     .createTable('subscription_dim',function(tbl){
         tbl.increments()
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
+      
         tbl
             .boolean('bookable_auth')
             .defaultTo(false);
@@ -53,6 +51,8 @@ exports.up = function(knex) {
             .notNullable()
             .references('id')
             .inTable('users_dim')
+            .onUpdate('CASCADE')
+            .onDelete('CASCADE');
             
 
         tbl
@@ -60,7 +60,8 @@ exports.up = function(knex) {
             .notNullable()
             .references('id')
             .inTable('service')
-            
+            .onUpdate('CASCADE')
+            .onDelete('CASCADE');
 
         tbl.unique(['user_id','service_id']);
 
@@ -85,6 +86,8 @@ exports.up = function(knex) {
             .notNullable()
             .references('id')
             .inTable('users_dim')
+            .onUpdate('CASCADE')
+            .onDelete('CASCADE');
            
         
         tbl
@@ -92,6 +95,8 @@ exports.up = function(knex) {
             .notNullable()
             .references('id')
             .inTable('subscription_dim')
+            .onUpdate('CASCADE')
+            .onDelete('CASCADE');
           
 
         tbl.unique(['user_id','subscription_id']);

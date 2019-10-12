@@ -14,7 +14,7 @@ for(let i = 0; i < desiredFakes; i ++){
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('users_dim').truncate()
+  return knex('users_dim').del()
     .then(function () {
       // Inserts seed entries
       return knex('users_dim').insert(fakesContainer);

@@ -4,7 +4,7 @@ let d2 = new Date(new Date().setDate(d1.getDate() + 1));
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('booking_fact').truncate()
+  return knex('booking_fact').del()
     .then(function () {
       // Inserts seed entries
       return knex('booking_fact').insert([
