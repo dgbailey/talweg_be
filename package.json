@@ -1,0 +1,21 @@
+{
+  "name": "talweg_be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.19.5",
+    "morgan": "^1.9.1",
+    "sqlite": "^3.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js",
+    "start":"npm index.js"
+  },
+  "keywords": [],
+  "author": "dustin bailey",
+  "license": "ISC"
+}
