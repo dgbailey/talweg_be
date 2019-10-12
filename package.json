@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "knex": "^0.19.5",
+    "knex-cleaner": "^1.3.0",
     "morgan": "^1.9.1",
     "sqlite": "^3.0.3"
   },
@@ -13,7 +15,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon index.js",
-    "start":"npm index.js"
+    "start": "npm index.js"
   },
   "keywords": [],
   "author": "dustin bailey",

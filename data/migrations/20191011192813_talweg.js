@@ -2,7 +2,9 @@
 exports.up = function(knex) {
     return knex.schema
     .createTable('users_dim',function(usersDim){
-        usersDim.increments();
+        usersDim.increments()
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
         usersDim
             .string('username','225')
             .notNullable()
@@ -13,7 +15,9 @@ exports.up = function(knex) {
        
     })
     .createTable('service_providers',function(tbl){
-        tbl.increments();
+        tbl.increments()
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
         tbl
             .string('company_name')
             .notNullable()
@@ -21,7 +25,9 @@ exports.up = function(knex) {
     })
 
     .createTable('service',function(tbl){
-        tbl.increments();
+        tbl.increments()
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
         tbl
             .string('service_name')
             .notNullable()
@@ -36,7 +42,9 @@ exports.up = function(knex) {
     })
 
     .createTable('subscription_dim',function(tbl){
-        tbl.increments();
+        tbl.increments()
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
         tbl
             .boolean('bookable_auth')
             .defaultTo(false);
@@ -45,16 +53,14 @@ exports.up = function(knex) {
             .notNullable()
             .references('id')
             .inTable('users_dim')
-            .onDelete('CASCADE')
-            .onUpdate('CASCADE');
+            
 
         tbl
             .integer('service_id')
             .notNullable()
             .references('id')
             .inTable('service')
-            .onDelete('CASCADE')
-            .onUpdate('CASCADE');
+            
 
         tbl.unique(['user_id','service_id']);
 
@@ -79,16 +85,14 @@ exports.up = function(knex) {
             .notNullable()
             .references('id')
             .inTable('users_dim')
-            .onDelete('CASCADE')
-            .onUpdate('CASCADE');
+           
         
         tbl
             .integer('subscription_id')
             .notNullable()
             .references('id')
             .inTable('subscription_dim')
-            .onDelete('CASCADE')
-            .onUpdate('CASCADE');
+          
 
         tbl.unique(['user_id','subscription_id']);
 
