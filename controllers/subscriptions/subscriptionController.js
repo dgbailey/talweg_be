@@ -25,10 +25,10 @@ router.delete('/:id',(req,res) => {
     db.deleteById(id).then(data => res.status('200').json({deleted:true})).catch(err=> res.status('500').json(err));
 })
 
-router.put('/:id'),(req,res) => {
+router.put('/:id',(req,res) => {
     const id = req.params.id;
     const body = req.body;
 
     db.updateById(id,body).then(data => res.status('200').json(data)).catch(err => res.status('500').json(err));
-}
+})
 module.exports = router;
