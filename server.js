@@ -1,17 +1,29 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const helmet = require('helmet');
 require('dotenv').config();
+const subscriptionController = require('./controllers/subscriptions/subscriptionController');
 
 
-//header and logging middleware
+//dynamic porting
 
-const port = process.env.PORT || '8000';
 
+//http headers and logging middleware
 const s = express();
+
 s.use(express.json());
-s.use(morgan);
-s.use(cors);
+s.use(morgan('dev'));
+s.use('/subscriptions',subscriptionController);
+s.use(cors);//cors needs req to check headers
+s.use(helmet);
+
+
+
+
+
+
+
 
 //controllers
 
@@ -19,4 +31,4 @@ s.use(cors);
 
 
 
-module.exports = {s,port};
+module.exports = {s};
