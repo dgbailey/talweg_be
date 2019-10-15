@@ -25,20 +25,4 @@ s.use('/login',jwtAuth);
 
 
 
-
-
-
-
-
-
-
-
-
-
-//controllers
-
-
-
-
-
 module.exports = {s};

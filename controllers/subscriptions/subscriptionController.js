@@ -1,9 +1,10 @@
 const db = require('./subscriptionsDQL');
 const express = require('express');
 const router = express.Router();
+const tokenRestricted = require('../../customMiddleware/tokenRestricted');
 
 
-router.get('/',(req,res,next) =>{
+router.get('/',tokenRestricted,(req,res,next) =>{
 
     db.getAll().then(data => res.status('200').json(data))
     .catch(err => res.status('500').json(err));

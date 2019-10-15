@@ -27,12 +27,28 @@ module.exports = {
     
     
   },
+  testing: {
 
-  // pool: {
-  //   afterCreate: (conn, done) => {
-  //     conn.run('PRAGMA foreign_keys = ON', done);
-  //   },
-  // },
+    client: 'pg',
+    connection: {
+      host: '127.0.0.1',
+      user: 'postgres',
+      password: 'postgres',
+      database: 'postgres'
+    },
+    // searchPath: ['knex', 'public'],
+  // searchPath: ['knex', 'public'],
+  // client: 'sqlite3',
+  // useNullAsDefault: true,
+  migrations: {
+    directory: './data/migrations'
+  },
+  seeds: {
+    directory: './data/seeds'
+  }
+  }
+
+  
 
   
 
