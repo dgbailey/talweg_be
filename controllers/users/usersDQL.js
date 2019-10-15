@@ -9,4 +9,7 @@ function getByUsername(username){
     return db(TABLE_NAME).where('username',username);
 }
 
-module.exports = {insert,getByUsername};
+function deleteByUsername(username){
+    return db(TABLE_NAME).where('username',username).del();
+}
+module.exports = {insert,getByUsername,deleteByUsername};
