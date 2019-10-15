@@ -7,7 +7,7 @@ const helmet = require('helmet');
 const subscriptionController = require('./controllers/subscriptions/subscriptionController');
 const bookingController = require('./controllers/bookings/bookingsController');
 const usersController = require('./controllers/users/usersController');
-const jwtAuth = require('./auth/auth');
+const {router:jwtAuth} = require('./auth/auth');
 //dynamic porting
 
 

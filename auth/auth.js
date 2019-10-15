@@ -37,4 +37,4 @@ function generateToken(user){
     return jwt.sign(payload, 'test' ,options);
 }
 
-module.exports = router;
+module.exports = {router,generateToken};
