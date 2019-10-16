@@ -12,7 +12,7 @@ router.post('/register',(req,res) => {
     db.insert(credentials)
     
     .then(([data]) => {
-        console.log(data);
+        
         let token = generateToken(data)
         res.status('200').json({"id":data.id,"username":data.username,token})
     
@@ -20,7 +20,7 @@ router.post('/register',(req,res) => {
     })
   
     
-    .catch(err => console.log(err));
+    .catch(err => res.status('500').json(err));
 })
 
 

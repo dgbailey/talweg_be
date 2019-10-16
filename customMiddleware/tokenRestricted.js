@@ -5,7 +5,7 @@ module.exports = (req,res,next) =>{
     if(token){
         //do some stuff
         jwt.verify(token,'test',(err,decodedToken) =>{
-            console.log(err) 
+            
             if(err){
                 res.status('401').json({error:'Token invalid'});
             }

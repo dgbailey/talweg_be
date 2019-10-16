@@ -1,13 +1,13 @@
+
 const request = require('supertest');
 const {s:server} = require('../../../server');
-const {generateToken} = require('../../../auth/auth');
 const {deleteByUsername} = require('../../users/usersDQL');
-
 
 let username = 'getToken';
 let credentials = {'username':username,'password':'test'};
 var token;
 beforeAll(() =>{
+   
     return request(server)
     .post('/users/register')
     .send(credentials)
@@ -15,14 +15,17 @@ beforeAll(() =>{
     .expect(200)
     .then(response => {token = response.body.token})
     
-})
+}) 
+
 
 afterAll(() => {
+ 
     //delete test user to avoid unique username constraing
     let username = 'getToken';
     return deleteByUsername(username);
 })
 
+//start tests
 
 describe('Tests for token protection',() =>{
     it('Returns 401 and appropriate json response',() =>{
@@ -45,3 +48,7 @@ describe('Tests for token protection',() =>{
             
     })
 })
+
+
+
+
