@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../controllers/users/usersDQL');
 const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
 router.post('/',(req,res) => {
     const {username,password} = req.body;
@@ -25,6 +26,7 @@ router.post('/',(req,res) => {
 function generateToken(user){
 
     const secret = process.env.JWT_SECRET;
+ 
     const  payload = {
         subject:user.id,
         username:user.username,
@@ -34,7 +36,7 @@ function generateToken(user){
         
     };
     
-    return jwt.sign(payload, 'test' ,options);
+    return jwt.sign(payload, secret ,options);
 }
 
 module.exports = {router,generateToken};

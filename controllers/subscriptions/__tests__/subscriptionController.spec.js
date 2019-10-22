@@ -5,7 +5,7 @@ const {deleteByUsername} = require('../../users/usersDQL');
 
 let username = 'getToken';
 let credentials = {'username':username,'password':'test'};
-var token;
+let token;
 beforeAll(() =>{
    
     return request(server)
@@ -20,7 +20,7 @@ beforeAll(() =>{
 
 afterAll(() => {
  
-    //delete test user to avoid unique username constraing
+    //delete test user to avoid unique username constraint
     let username = 'getToken';
     return deleteByUsername(username);
 })
@@ -36,6 +36,7 @@ describe('Tests for token protection',() =>{
     })
 
     it('Returns 200 and 3 json subscriptions using valid JWT',() =>{
+        
         return request(server)
         .get('/subscriptions')
         .set('Authorization',token)

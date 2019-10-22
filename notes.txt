@@ -1,0 +1,50 @@
+
+
+Unix, sockets, Node.js
+
+-2) A UNIX socket is an inter-process communication mechanism that allows bidirectional data exchange between processes running on the same machine.
+7
+
+https://medium.com/@copyconstruct/the-method-to-epolls-madness-d9d2d6378642
+
+-1)A socket an abstraction. It provides a interface for applications to utilize a system resource (in this case the network connection) in a way that allows the operating system to mediate and organize the use of a limited resource by any number of applications.
+https://stackoverflow.com/questions/27770556/does-node-js-use-thread-per-socket-connection
+
+A kernel connects the application software to the hardware of a computer.
+
+0) In the simplest terms, a socket is a pseudo-file that represents a network connection. 
+Once a socket has been created (using the proper primitives, and the proper parameters to identify the other host),
+writes to the socket are turned into network packets that get sent out, and data received from the network can be read from the socket.
+
+In one regard, sockets are very similar to pipes: they look just like files to the programs using them, but do not result in read or writes to a disk; rather, they allow communicating with another program (local in the case of pipes, and possibly remote in the case of sockets)
+
+1) A file descriptor is just an integer associated with an open file and it can be a network connection,
+ a text file, a terminal, or something else
+
+2)Commands such as read() and write() work with sockets in the same way they do with files and pipes.
+
+3) 
+Stream Sockets − Delivery in a networked environment is guaranteed. If you send through the stream socket three items "A, B, C", they will arrive in the same order − "A, B, C". These sockets use TCP (Transmission Control Protocol) for data transmission. If delivery is impossible, the sender receives an error indicator. Data records do not have any boundaries.
+
+Datagram Sockets − Delivery in a networked environment is not guaranteed. They're connectionless because you don't need to have an open connection as in Stream Sockets − you build a packet with the destination information and send it out. They use UDP (User Datagram Protocol).
+
+4) The term middleware originates form teh client server architectural model
+
+5
+
+6) IP address is use to identify a host or a group of hosts in a network while port number is used to identify a particular service running in a host
+
+7) CONNECT( )    create a connection to a server (http, tcp, etc)
+8) BIND( ) assign  local IP address to a socket (port number (service on a system on the larger internet)
+
+
+9) Listen ()    The listen function converts an unconnected socket into a passive socket, indicating that the kernel should accept incoming connection requests directed to this socket.
+
+when is node multithreaded?
+  -> file io
+  -> dns lookup in get
+
+default thread pool size = 4
+
+Low resource cost per connection
+polling for connecions (tell the kernel what we are interested in, give kernal a way to notify us)
